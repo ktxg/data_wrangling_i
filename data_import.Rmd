@@ -46,7 +46,12 @@ litters_data = read_csv(file = "./data/FAS_litters.csv",
 ## Read in an Excel file 
 
 ```{r}
-mlb11_data = read_excel(path = "data/mlb11.xlsx") 
+mlb11_data_subset = 
+  read_excel(
+    path = "data/mlb11.xlsx", 
+    range = "A1:D7") 
+
+write_csv(mlb11_data_subset, path = "./data/mlb_subset.csv")
 ```
 
 
