@@ -1,0 +1,14 @@
+---
+title: "Data Manipulation"
+author: "Katie"
+date: "10/7/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse) 
+library(readxl) 
+```
+
