@@ -29,7 +29,7 @@ pups_data = janitor::clean_names(pups_data)
 ## Play with column parsing 
 
 ```{r}
-litters_data = read_csv(file = "./data/FAS_litters.csv",
+litters_data = readr::read_csv(file = "./data/FAS_litters.csv",
   col_types = cols(
     Group = col_character(),
     `Litter Number` = col_character(),
