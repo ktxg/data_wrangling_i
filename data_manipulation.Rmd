@@ -55,6 +55,31 @@ select(pups_data, litter_number, sex, pd_ears)
  ## Filtering 
 
 ```{r}
+# using filter, the group variable should be equal to the value "Con7"
+# the double equals is used to differentiate b/w an assignment; we're not trying to set group to 7, 
+# but to check if the group equal to 7 
+# this is a logical operator; when it's true it means keep this row 
+filter(litters_data, group == "Mod8")
 
+filter(litters_data, gd_of_birth == 20)
+
+filter(litters_data, gd_of_birth < 20) 
+
+filter(litters_data, pups_born_alive < 6) 
+
+filter(litters_data, pups_born_alive < 6, group == "Con7") 
+
+# filter(litters_data, group == "Con7" | group == "Mod8")
+filter(litters_data, group %in% c("Con7", "Mod8"))
+
+filter(litters_data, pups_born_alive >= 4, pups_born_alive <= 6) 
+
+filter(litters_data, gd0_weight + gd18_weight < 70) 
+
+filter(litters_data, gd0_weight > gd18_weight) 
+
+# don't do this: 
+# filter(litters_data, !is.na(gd0_weight))
+drop_na(litters_data, gd0_weight)
 ```
 
