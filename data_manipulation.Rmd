@@ -9,6 +9,52 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse) 
-library(readxl) 
+```
+
+## Import datasets 
+
+```{r}
+litters_data = read_csv("./data/FAS_litters.csv")
+litters_data = janitor::clean_names(litters_data)
+
+pups_data = read_csv("./data/FAS_pups.csv")
+pups_data = janitor::clean_names(pups_data) 
+```
+
+## Selecting 
+
+```{r}
+select(litters_data, group, litter_number)
+
+select(litters_data, group, litter_number, gd0_weight) 
+
+# start_with() calls all the variables that start with pups 
+select(litters_data, litter_number, gd0_weight, starts_with("pups"))
+
+# order is important 
+select(litters_data, litter_number, group, gd0_weight)
+
+# everything() calls for all the other variables 
+select(litters_data, litter_number, group, everything())
+
+# the - sign removes only that group variable from the dataset 
+select(litters_data, -group)
+
+# the : sign gives you all the columns between the first and second variable 
+select(litters_data, litter_number, gd0_weight:pups_born_alive)
+
+# this renames 'group' to 'GROUP' and selected these two columns  
+select(litters_data, GROUP = group, litter_number) 
+
+# rename just renames columns, it doesn't do any selecting of variables at the same time 
+rename(litters_data, GROUP = group)
+
+select(pups_data, litter_number, sex, pd_ears)
+```
+ 
+ ## Filtering 
+
+```{r}
+
 ```
 
