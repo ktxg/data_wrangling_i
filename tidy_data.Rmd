@@ -106,6 +106,8 @@ Try to join these datasets!
 fas_data = 
   left_join(pup_data, litter_data, by = "litter_number") 
 
+  full_join(pup_data, litter_data, by = "litter_number") 
+
 ## Join into the pups data everything that's in litter data using left join
 ## b/c we care about  pup-specific outcomes 
 ## and pup data lists out every single pup that we have info on. 
