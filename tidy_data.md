@@ -92,3 +92,34 @@ lotr_data =
   ) %>% 
   select(movie, race, sex, words)
 ```
+
+## Join datasets
+
+``` r
+pup_data = 
+  read_csv("./data/FAS_pups.csv", col_types = "ciiiii") %>%
+  janitor::clean_names() %>%
+  mutate(sex = recode(sex, `1` = "male", `2` = "female")) 
+
+litter_data = 
+  read_csv("./data/FAS_litters.csv", col_types = "ccddiiii") %>%
+  janitor::clean_names() %>%
+  select(-pups_survive) %>%
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group))
+```
+
+Try to join these datasets\!
+
+``` r
+fas_data = 
+  left_join(pup_data, litter_data, by = "litter_number") 
+
+## Join into the pups data everything that's in litter data using left join
+## b/c we care about  pup-specific outcomes 
+## and pup data lists out every single pup that we have info on. 
+## It's the dataset that has everything we need, so we should 
+## draw into that dataset the litter level info. 
+## So we're starting with pups and pulling everything else in. 
+```
